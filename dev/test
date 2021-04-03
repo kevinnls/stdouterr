@@ -76,14 +76,11 @@ check_compilers(){
 	    echo "found compiler: ${compiler}"
 	    compile(){
 		echo "=== compiling ==="
-		echo
 		"${compiler_path}" "${compile_args[@]}" "${iname}"
 		if [[ $? -eq 0 ]]; then
-		    echo
 		    echo "=== compiled! ==="
 		    return 0
 		else
-		    echo
 		    echo "=== compile failed! ==="
 		    return 1
 		fi
@@ -99,7 +96,7 @@ check_compilers(){
 test(){
     echo "=== start of test ==="
     echo
-    "${oname}"
+    "${oname}" "$@"
     echo
     echo
     echo "=== end of test ==="
@@ -112,8 +109,7 @@ if check_compilers; then
 	fi
     fi
 else
-    exit_code=$?
     >>2 echo "some error occurred"
-    exit "${exit_code}"
+    exit 1
 fi
 
