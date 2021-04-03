@@ -13,7 +13,8 @@ project_name='stdouterr'
 project_version='v0.1.0-beta'
 project_lang='C'
 
-project_root="$( cd .. ; pwd )"
+script_dir="$(realpath -e $(dirname "${0}") 2>/dev/null)"
+project_root=${script_dir%/*} # remove everything after the final `/`
 
 test_dir="${project_root}/dev/tests.d"
 [[ ! -d "${test_dir}" ]] && mkdir -p "${test_dir}"
@@ -104,9 +105,15 @@ test(){
     echo "=== end of test ==="
 }
 
-check_compilers \
-    && compile \
-    && echo $? \
-    && test "$@" \
-    || exit 1
+if check_compilers; then
+    if compile; then
+	if test "$@"; then
+	    echo "completed with exit code $?"
+	fi
+    fi
+else
+    exit_code=$?
+    >>2 echo "some error occurred"
+    exit "${exit_code}"
+fi
 
