@@ -1,24 +1,87 @@
 #include <stdio.h>
+#include <stdlib.h> //remove if alt to `malloc` + clone found
 
+unsigned long int hash(){
+    //implement a hashing function
+}
+
+// define hashes of legal cli flags
+/*
+#define OUTPUT hash("-o");
+#define ERROR hash("-e");
+#define NOOUT hash("-t");
+#definte NOERR hash("-r");
+*/
+
+// default values
 char *output = "This is output", *error = "This is an error message";
-int printOut = 0, printErr = 0;
+int printOut = 1, printErr = 1;
 
-void write_stdout(){
-    fprintf(stdout, "%s\n", output);
+// to make the cli args globally available
+char **argv;
+
+// ! use minimal # of functions to reduce stacks ! //
+
+void print_usage(){
+    printf("HELP MENU PRINTED");
+    // JK. make a help menu
 }
 
-void write_stderr(){
-    fprintf(stderr, "%s\n", error);
+
+int parse(const int index){
+
+    int _return_value = 1;
+    char* param = argv[index];
+
+    printf("currently parsing index %d of argv: %s\n", index, param);
+
+    // hash `param`
+    /*
+       hash(param)
+     * */
+    // run switch-case matching on hash
+    /*
+       switch (hashed_param) {
+       case OUTPUT:
+       output = argv[index+1];
+       ++_return_value;
+       case ERROR:
+       error = argv[index+1];
+       ++_return_value;
+       case NOOUT:
+       printOut = 0;
+       case NOERR:
+       printErr = 0;
+       default:
+       fprintf(stderr, "ERROR: unrecognised flags\n");
+       print_usage();
+       exit(1);
+       }
+       */
+
+    return _return_value;
 }
 
-int main(int argc, char const *argv[]) {
+int main(const int argc, char **_argv){
+
+    //look for alt method to make _argv globally accessible
+    argv = malloc( sizeof *argv * argc);
+    for(int i=0; i<argc; i++){
+	argv[i] = _argv[i];
+    }
 
     if(argc > 1){
 	//parse the arguments
+	int counter = 1;
+	while ( counter < argc ){
+	    counter += parse(counter);
+	}
     }
 
-    write_stdout();
-    write_stderr();
+    if(printOut)
+	fprintf(stdout, "%s\n", output);
+    if(printErr)
+	fprintf(stderr, "%s\n", error);
 
     return 0;
 }
