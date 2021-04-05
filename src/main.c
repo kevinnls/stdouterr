@@ -3,6 +3,7 @@
 
 unsigned long int hash(){
     //implement a hashing function
+    return 123456;
 }
 
 // define hashes of legal cli flags
