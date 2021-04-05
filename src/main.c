@@ -34,7 +34,31 @@ int parse(const int index){
     int _return_value = 1;
     char* param = argv[index];
 
-    printf("currently parsing index %d of argv: %s\n", index, param);
+    //printf("currently parsing index %d of argv: %s\n", index, param);
+
+    if(param[0] == '-') {
+	//printf("it's an option\n");
+	switch(param [1]){
+	    case 'o':
+		output = argv[index+1];
+		++_return_value;
+		break;
+	    case 'e':
+		error = argv[index+1];
+		++_return_value;
+		break;
+	    case 't':
+		printOut = 0;
+		break;
+	    case 'r':
+		printErr = 0;
+		break;
+	    default:
+		fprintf(stderr, "ERROR: unrecognised flags\n");
+		print_usage();
+		exit(1);
+	}
+    }
 
     // hash `param`
     /*
