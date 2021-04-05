@@ -20,8 +20,8 @@ test_dir="${project_root}/dev/tests.d"
 [[ ! -d "${test_dir}" ]] && mkdir -p "${test_dir}"
 src_dir="${project_root}/src"
 
-c_compilers=('gcc')
-cpp_compilers=('g++')
+c_compilers=('gcc' 'clang')
+cpp_compilers=('g++' 'clang')
 
 _oname="${project_name:0:5}-${project_version}~test"
 oname="$test_dir/${output:-${_oname}}"
@@ -85,6 +85,7 @@ check_compilers(){
 		    return 1
 		fi
 	    }
+	break
 	else
 	    continue
 	fi
