@@ -4,6 +4,7 @@ set -e
 
 # set -x for debugging if DEBUG is set
 function debug() { set -xv; }
+function get_last_commit() { git show -q --pretty='%h'; }
 ${DEBUG+debug}
 
 # declare project info variables
@@ -13,18 +14,21 @@ project_name='stdouterr'
 project_version='v0.1.0-beta'
 project_lang='C'
 
+curr_hash=$(get_last_commit)
+
 script_dir="$(realpath -e $(dirname "${0}") 2>/dev/null)"
 project_root=${script_dir%/*} # remove everything after the final `/`
 
 test_dir="${project_root}/dev/tests.d"
-[[ ! -d "${test_dir}" ]] && mkdir -p "${test_dir}"
+out_dir="${project_root}/dev/test-output"
+[[ ! -d "${out_dir}" ]] && mkdir -p "${out_dir}"
 src_dir="${project_root}/src"
 
 c_compilers=('gcc' 'clang')
 cpp_compilers=('g++' 'clang')
 
-_oname="${project_name:0:5}-${project_version}~test"
-oname="$test_dir/${output:-${_oname}}"
+_oname="${project_name:0:5}-${project_version}~${curr_hash}_${RANDOM}"
+oname="$out_dir/${output:-${_oname}}"
 _iname="${src_dir}/main.c"
 iname="${input:-${_iname}}"
 
