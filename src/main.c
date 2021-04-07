@@ -46,6 +46,9 @@ int parse(const int index){
     if(param[0] == '-') {
 	//printf("it's an option\n");
 	switch(param [1]){
+	    case 'h':
+		print_usage();
+		exit(0);
 	    case 'o':
 		output = argv[index+1];
 		++_return_value;
