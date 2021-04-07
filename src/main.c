@@ -1,3 +1,6 @@
+/*TODO:
+#include hex from troff file (parsed or unparsed)
+*/
 #include <stdio.h>
 #include <stdlib.h> //remove if alt to `malloc` + clone found
 
@@ -25,7 +28,11 @@ char **argv;
 
 void print_usage(){
     printf("HELP MENU PRINTED");
-    // JK. make a help menu
+    /*TODO:
+    //print hex array included at ln1
+    // `stdouterr_1` is the *likely* name of the variable holding the hex
+    printf("%s", stdouterr_1);
+    */
 }
 
 
