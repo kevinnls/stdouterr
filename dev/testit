@@ -27,7 +27,8 @@ src_dir="${project_root}/src"
 c_compilers=('gcc' 'clang')
 cpp_compilers=('g++' 'clang')
 
-_oname="${project_name:0:5}-${project_version}~${curr_hash}_${RANDOM}"
+       # create a unique name using date in nano-seconds --- bc lolz
+_oname="${project_name:0:5}-${project_version}~${curr_hash}_$(date +%N)"
 oname="$out_dir/${output:-${_oname}}"
 _iname="${src_dir}/main.c"
 iname="${input:-${_iname}}"
