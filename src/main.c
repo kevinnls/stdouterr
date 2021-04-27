@@ -10,7 +10,7 @@ unsigned long int hash(){
 }
 
 // define hashes of legal cli flags
-/*
+/*TODO:
 #define OUTPUT hash("-o");
 #define ERROR hash("-e");
 #define NOOUT hash("-t");
@@ -19,6 +19,7 @@ unsigned long int hash(){
 
 // default values
 char *output = "This is output", *error = "This is an error message";
+// "boolean" true values
 int printOut = 1, printErr = 1;
 
 // to make the cli args globally available
@@ -41,10 +42,7 @@ int parse(const int index){
     int _return_value = 1;
     char* param = argv[index];
 
-    //printf("currently parsing index %d of argv: %s\n", index, param);
-
     if(param[0] == '-') {
-	//printf("it's an option\n");
 	switch(param [1]){
 	    case 'h':
 		print_usage();
@@ -68,6 +66,10 @@ int parse(const int index){
 		print_usage();
 		exit(1);
 	}
+    } else {
+	fprintf(stderr, "ERROR: unrecognised flags\n");
+	print_usage();
+	exit(1);
     }
 
     // hash `param`
@@ -99,16 +101,14 @@ int parse(const int index){
 
 int main(const int argc, char **_argv){
 
-    //look for alt method to make _argv globally accessible
+    //TODO: alt method to make _argv globally accessible
     argv = malloc( sizeof *argv * argc);
     for(int i=0; i<argc; i++){
 	argv[i] = _argv[i];
     }
 
     if(argc > 1){
-	//parse the arguments
-	int counter = 1;
-	while ( counter < argc ){
+	for(int counter = 1; counter < argc;){
 	    counter += parse(counter);
 	}
     }
