@@ -3,6 +3,7 @@
 */
 #include <stdio.h>
 #include <stdlib.h> //remove if alt to `malloc` + clone found
+#include "tmp_help.h"
 
 unsigned long int hash(){
     //implement a hashing function
@@ -28,7 +29,7 @@ char **argv;
 // ! use minimal # of functions to reduce stacks ! //
 
 void print_usage(){
-    printf("HELP MENU PRINTED");
+    tmp_help();
     /*TODO:
     //print hex array included at ln1
     // `stdouterr_1` is the *likely* name of the variable holding the hex
