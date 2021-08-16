@@ -16,6 +16,42 @@ have a readily available tool i can use 🤓✨
 
 🥚 initialised
 
+### how to use ?
+
+not distributing compiled versions yet (it's not even released!)
+
+so you can compile it yourself
+
+#### dependencies
+- `stdio.h`
+- `stdlib.h`
+both of which you most likely got when installing your compiler
+
+if for some reason you don't have it and your compilation fails
+#### Debian / Ubuntu / family
+install the package named `libc6-dev`
+#### RHEL / Fedora / CentOS family
+install the package named `glibc-devel`
+#### other
+sorry no idea. Google will be your friend tho
+
+#### compilation
+```shell
+gcc -o stdouterr src/main.c
+```
+
+#### installation
+##### only for current user
+```shell
+cp ./stdouterr ~/.local/bin/
+# OR
+cp ./stdouterr ~/bin
+```
+##### for all users on the system
+```
+# as root or using sudo
+cp ./stdouterr /usr/local/bin
+```
 
 ### contributing
 
