@@ -14,7 +14,7 @@ have a readily available tool i can use 🤓✨
 
 ### how is `stdouerr`?
 
-🥚 initialised
+🐣 hatchling
 
 ### how to use?
 
