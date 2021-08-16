@@ -28,14 +28,6 @@ so you can (_cough_ have to) compile it yourself
 
 both of which you most likely got when installing your compiler
 
-if for some reason you don't have it and your compilation fails
-##### Debian / Ubuntu / family
-install the package named `libc6-dev`
-##### RHEL / Fedora / CentOS family
-install the package named `glibc-devel`
-##### other
-sorry no idea. Google will be your friend tho
-
 #### compilation
 ```shell
 gcc -o stdouterr ./src/main.c
@@ -54,6 +46,22 @@ cp ./stdouterr ~/bin
 # as root or using sudo
 cp ./stdouterr /usr/local/bin
 ```
+
+#### troubleshooting
+<details>
+<summary>
+compilation failed because no such file `stdio.h` and/or `stdlib.h`
+</summary>
+
+##### Debian / Ubuntu / family
+install the package named `libc6-dev`
+##### RHEL / Fedora / CentOS family
+install the package named `glibc-devel`
+##### other
+sorry no idea. Google will be your friend tho
+
+</details>
+
 
 ### contributing
 
