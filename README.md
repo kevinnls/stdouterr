@@ -1,6 +1,6 @@
 # stdouterr
 
-## combining stdout and stderr
+> combining stdout and stderr
 
 ### what is `stdouterr`?
 
@@ -16,28 +16,29 @@ have a readily available tool i can use 🤓✨
 
 🥚 initialised
 
-### how to use ?
+### how to use?
 
 not distributing compiled versions yet (it's not even released!)
 
-so you can compile it yourself
+so you can (_cough_ have to) compile it yourself
 
 #### dependencies
 - `stdio.h`
 - `stdlib.h`
+
 both of which you most likely got when installing your compiler
 
 if for some reason you don't have it and your compilation fails
-#### Debian / Ubuntu / family
+##### Debian / Ubuntu / family
 install the package named `libc6-dev`
-#### RHEL / Fedora / CentOS family
+##### RHEL / Fedora / CentOS family
 install the package named `glibc-devel`
-#### other
+##### other
 sorry no idea. Google will be your friend tho
 
 #### compilation
 ```shell
-gcc -o stdouterr src/main.c
+gcc -o stdouterr ./src/main.c
 ```
 
 #### installation
@@ -46,6 +47,7 @@ gcc -o stdouterr src/main.c
 cp ./stdouterr ~/.local/bin/
 # OR
 cp ./stdouterr ~/bin
+# OR to any other path in PATH
 ```
 ##### for all users on the system
 ```
