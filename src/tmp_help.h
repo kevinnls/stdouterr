@@ -19,5 +19,5 @@ void tmp_help(){
 	-t\n\
 	    Don\'t print output\n\
 	-r\n\
-	    Don\'t print error");
+	    Don\'t print error\n");
 }
