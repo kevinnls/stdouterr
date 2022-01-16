@@ -38,7 +38,7 @@ void print_usage(){
 }
 
 
-int parse(const int index){
+int parse(const int index, char **argv){
 
     int _return_value = 1;
     char* param = argv[index];
@@ -100,17 +100,11 @@ int parse(const int index){
     return _return_value;
 }
 
-int main(const int argc, char **_argv){
-
-    //TODO: alt method to make _argv globally accessible
-    argv = malloc( sizeof *argv * argc);
-    for(int i=0; i<argc; i++){
-	argv[i] = _argv[i];
-    }
+int main(const int argc, char **argv){
 
     if(argc > 1){
 	for(int counter = 1; counter < argc;){
-	    counter += parse(counter);
+	    counter += parse(counter, argv);
 	}
     }
 
