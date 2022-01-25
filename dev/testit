@@ -103,9 +103,11 @@ test(){
     echo "=== start of test ==="
     echo
     "${oname}" "$@"
+    ret=$?
     echo
     echo
     echo "=== end of test ==="
+    return ret
 }
 
 if check_compilers; then
