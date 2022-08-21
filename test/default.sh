@@ -114,7 +114,7 @@ if check_compilers; then
     if compile; then
 	if test "$@"; then
 	    echo "completed with exit code $?"
-	    ln -sfn "${oname}" "${project_root}/dev/stdouterr"
+	    ln -sfn "${oname}" "${test_dir}/stdouterr"
 	fi
     fi
 else
