@@ -1,4 +1,4 @@
-.PHONY: all builddir configure compile clean
+.PHONY: all builddir configure compile clean test
 build: prebuild configure compile
 
 INSTALL = install
@@ -36,3 +36,8 @@ install: preinstall
 uninstall:
 	rm ${bindir}${BIN}
 	rm ${mandir}${MAN}
+
+test:
+	test/default.sh
+test-run:
+	test/stdouterr
