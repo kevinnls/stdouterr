@@ -19,8 +19,8 @@ curr_hash=$(get_last_commit)
 script_dir="$(realpath -e $(dirname "${0}") 2>/dev/null)"
 project_root=${script_dir%/*} # remove everything after the final `/`
 
-test_dir="${project_root}/dev/tests.d"
-out_dir="${project_root}/dev/test-output"
+test_dir="${project_root}/test"
+out_dir="${test_dir}/output"
 [[ ! -d "${out_dir}" ]] && mkdir -p "${out_dir}"
 src_dir="${project_root}/src"
 
