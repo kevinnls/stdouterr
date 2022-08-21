@@ -107,7 +107,7 @@ test(){
     echo
     echo
     echo "=== end of test ==="
-    return ret
+    return ${ret}
 }
 
 if check_compilers; then
